@@ -1,0 +1,10 @@
+CREATE TABLE  `customers` (
+`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`name` VARCHAR( 100 ) NOT NULL ,
+`email` VARCHAR( 100 ) NOT NULL ,
+`mobile` VARCHAR( 100 ) NOT NULL
+) ENGINE = INNODB;
+
+ALTER TABLE `customers` ADD `image` VARCHAR(255) NOT NULL AFTER `mobile`;
+ALTER TABLE `customers` ADD `gender` VARCHAR(10) NOT NULL AFTER `image`;
+ALTER TABLE `customers` ADD `country` VARCHAR(10) NOT NULL AFTER `gender`;
