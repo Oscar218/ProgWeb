@@ -1,5 +1,6 @@
 <?php
 // Include config file
+include'header.php';
 require_once "config.php";
  
 // Define variables and initialize with empty values

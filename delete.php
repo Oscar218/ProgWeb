@@ -1,4 +1,5 @@
 <?php 
+    require 'header.php';
 	require 'database.php';
 	require 'uploader.php';
 
@@ -31,9 +32,10 @@
 		$q = $pdo->prepare($sql);
 		$q->execute(array($id));
 		Database::disconnect();
-		header("Location: index.php");
+		header("Location: view.php");
 		
 	} 
+	
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +59,7 @@
 					  <p class="alert alert-error">Are you sure to delete ?</p>
 					  <div class="form-actions">
 						  <button type="submit" class="btn btn-danger">Yes</button>
-						  <a class="btn" href="index.php">No</a>
+						  <a class="btn" href="view.php">No</a>
 						</div>
 					</form>
 				</div>

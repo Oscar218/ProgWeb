@@ -1,5 +1,6 @@
 <?php
 var_dump($_SERVER['QUERY_STRING']);
+require 'header.php';
 require 'database.php';
 require 'uploader.php';
 require 'input.php';
@@ -10,7 +11,7 @@ if (!empty($_GET['id'])) {
 }
 
 if (null == $id) {
-    header("Location: index.php");
+    header("Location: view.php");
 }
 
 $genderInput = new Gender();
@@ -89,7 +90,7 @@ if (!empty($_POST)) {
         $q = $pdo->prepare($sql);
         $q->execute(array($name, $email, $mobile, $image, $gender, $country, $id));
         Database::disconnect();
-        header("Location: index.php");
+        header("Location: view.php");
     }
 } else {
     $pdo = Database::connect();
@@ -210,7 +211,7 @@ if (!empty($_POST)) {
 
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Update</button>
-                <a class="btn" href="index.php">Back</a>
+                <a class="btn" href="view.php">Back</a>
             </div>
         </form>
     </div>

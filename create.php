@@ -1,5 +1,5 @@
  <?php
-
+include'header.php';
 require 'database.php';
 require 'uploader.php';
 require 'input.php';
@@ -74,7 +74,7 @@ if (!empty($_POST)) {
         $q = $pdo->prepare($sql);
         $q->execute(array($name, $email, $mobile, $image, $gender, $country));
         Database::disconnect();
-        header("Location: index.php");
+        header("Location: view.php");
     }
 }
 ?>
@@ -93,7 +93,7 @@ if (!empty($_POST)) {
 
     <div class="span10 offset1">
         <div class="row">
-            <h3>Create nova entrada</h3>
+            <h4>Create nova entrada</h4>
         </div>
 
         <form class="form-horizontal" action="create.php" method="post" enctype="multipart/form-data">
@@ -107,7 +107,59 @@ if (!empty($_POST)) {
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="control-group <?php echo !empty($emailError) ? 'error' : ''; ?>">
+            
+            
+            
+           
+           
+           
+           
+            <div class="control-group <?php echo !empty($mobileError) ? 'error' : ''; ?>">
+                <label class="control-label">Valor/Preços</label>
+
+                <div class="controls">
+                    <input name="mobile" type="number" placeholder="Valor"
+                           value="<?php echo !empty($mobile) ? $mobile : ''; ?>">
+                    <?php if (!empty($mobileError)): ?>
+                        <span class="help-inline"><?php echo $mobileError; ?></span>
+                    <?php endif; ?>
+                </div>
+            </div>
+
+            
+            
+            
+            
+
+            
+            
+            <div class="control-group <?php echo !empty($genderError) ? 'error' : ''; ?>">
+                <label class="control-label">Gender</label>
+                <div class="controls">
+                    <?php
+                        echo $genderInput->input();
+                    ?>
+                    <?php if (!empty($genderError)): ?>
+                        <span class="help-inline"><?php echo $genderError; ?></span>
+                    <?php endif; ?>
+                </div>
+            </div>
+
+            
+            
+            <div class="control-group <?php echo !empty($countryError) ? 'error' : ''; ?>">
+                <label class="control-label">Tipo Entrada</label>
+                <div class="controls">
+                    <?php
+                        echo $countryInput->input();
+                    ?>
+                    <?php if (!empty($countryError)): ?>
+                        <span class="help-inline"><?php echo $countryError; ?></span>
+                    <?php endif; ?>
+               </div>
+            </div>
+            
+             <div class="control-group <?php echo !empty($emailError) ? 'error' : ''; ?>">
                 <label class="control-label">Email Address</label>
 
                 <div class="controls">
@@ -115,17 +167,6 @@ if (!empty($_POST)) {
                            value="<?php echo !empty($email) ? $email : ''; ?>">
                     <?php if (!empty($emailError)): ?>
                         <span class="help-inline"><?php echo $emailError; ?></span>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <div class="control-group <?php echo !empty($mobileError) ? 'error' : ''; ?>">
-                <label class="control-label">Valor/Preços</label>
-
-                <div class="controls">
-                    <input name="mobile" type="text" placeholder="Valor"
-                           value="<?php echo !empty($mobile) ? $mobile : ''; ?>">
-                    <?php if (!empty($mobileError)): ?>
-                        <span class="help-inline"><?php echo $mobileError; ?></span>
                     <?php endif; ?>
                 </div>
             </div>
@@ -139,31 +180,8 @@ if (!empty($_POST)) {
                     <?php endif; ?>
                 </div>
             </div>
-
-            <div class="control-group <?php echo !empty($genderError) ? 'error' : ''; ?>">
-                <label class="control-label">Gender</label>
-                <div class="controls">
-                    <?php
-                        echo $genderInput->input();
-                    ?>
-                    <?php if (!empty($genderError)): ?>
-                        <span class="help-inline"><?php echo $genderError; ?></span>
-                    <?php endif; ?>
-                </div>
-            </div>
-
-            <div class="control-group <?php echo !empty($countryError) ? 'error' : ''; ?>">
-                <label class="control-label">Country</label>
-                <div class="controls">
-                    <?php
-                        echo $countryInput->input();
-                    ?>
-                    <?php if (!empty($countryError)): ?>
-                        <span class="help-inline"><?php echo $countryError; ?></span>
-                    <?php endif; ?>
-                </div>
-            </div>
-
+            
+            
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Create</button>
                 <a class="btn" href="index.php">Back</a>

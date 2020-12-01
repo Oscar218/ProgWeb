@@ -22,12 +22,12 @@ abstract class Shared
 class Country extends Shared
 {
     protected $options = array(
-        'AF' => 'Despesa Pontual',
-        'AL' => 'Impostos',
-        'DZ' => 'Faturas',
-        'AR' => 'Salario',
-        'AT' => 'Bonus',
-        'AT' => 'Job Extra',
+        'DE' => 'Despesa Pontual',
+        'IM' => 'Impostos',
+        'FA' => 'Faturas',
+        'SA' => 'Salario',
+        'BO' => 'Bonus',
+        'JE' => 'Job 7 Extra',
     );
 
     public function input($default = null)
@@ -49,8 +49,8 @@ class Country extends Shared
 class Gender extends Shared
 {
     protected $options = array(
-        'm' => 'Mes',
-        'f' => 'Ano',
+        'M' => 'Mes',
+        'A' => 'Ano',
     );
 
     public function input($default = null)

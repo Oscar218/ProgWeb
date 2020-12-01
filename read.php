@@ -1,4 +1,5 @@
 <?php
+include'header.php';
 require 'database.php';
 require 'input.php';
 
@@ -8,7 +9,7 @@ if (!empty($_GET['id'])) {
 }
 
 if (null == $id) {
-    header("Location: index.php");
+    header("Location: view.php");
 } else {
     $pdo = Database::connect();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -99,7 +100,7 @@ $countryInput = new Country();
             </div>
 
             <div class="form-actions">
-                <a class="btn" href="index.php">Back</a>
+                <a class="btn" href="view.php">Back</a>
             </div>
 
 
